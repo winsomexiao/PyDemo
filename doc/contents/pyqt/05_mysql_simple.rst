@@ -9,6 +9,6 @@ PyQt初阶
 ------------------------------------
 这个例子是在网上找的, 改写成PyQt5和Python3.4下运行成功
 
-.. literalinclude:: ../../../mysqlDemo/DBManager.py
+.. literalinclude:: ../../../src/dbdemo/mysqlSimpleDemo/DBManager.py
    :language: python
    :linenos:

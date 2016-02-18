@@ -16,10 +16,15 @@
     PyQt提供了一个QT设计师的程序，可以用来图形化的设计界面UI，但生成的.ui文件要通过pyuic命令转换成.py代码，不过可以使用Eric或PyCharm开发IDE辅助转换就很方便了。
     PyQt安装会自动安装到andconda的Anaconda3\Lib\site-packages\PyQt5下
 
-  - Eric5 :到官网 http://eric-ide.python-projects.org/ 下载最Eric5安装包，Eric是免费的，代码提示较弱。具体见Eric章节
+  - Eric5 :到官网 http://eric-ide.python-projects.org/ 下载最Eric5安装包，Eric是免费的，代码提示较弱。
 
-  - PyCharm5 :到官网 http://eric-ide.python-projects.org/ 下载最Eric5安装包，PyCharm是收费的，功能强大，具体见PyCharm章节
+  .. seealso::
+     具体见Eric章节
 
+  - PyCharm5 :到官网 http://eric-ide.python-projects.org/ 下载最Eric5安装包，PyCharm是收费的，功能强大。
+
+  .. seealso::
+     具体见PyCharm章节
 
 
 相关模块包概要

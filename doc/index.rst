@@ -18,6 +18,14 @@ Python的笔记
    contents/prepare/03_PyCharm5
    contents/prepare/04_Sphinx
 
+Python基础学习
+====================
+
+.. toctree::
+   :maxdepth: 2
+
+   contents/python/01_python_module
+
 PyQt初阶
 ===============
 
