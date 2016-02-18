@@ -50,7 +50,7 @@ Python模块
 .. sidebar:: 模块包
     :subtitle: 模块包示意
 
-    .. image:: images\python_moudlepackage.jpg
+    .. image:: images/python_moudlepackage.jpg
 
 
 - 该文件夹中必须包含一个__init__.py的文件，提醒Python，该文件夹为一个模块包。__init__.py可以是一个空文件。
