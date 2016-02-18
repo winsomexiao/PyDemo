@@ -213,7 +213,7 @@ html_static_path = ['_static']
 htmlhelp_basename = 'pyDemodoc'
 
 # -- Options for LaTeX output ---------------------------------------------
-
+# for chinese latex pdf output
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if on_rtd:
