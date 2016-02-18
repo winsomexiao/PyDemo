@@ -12,5 +12,6 @@ Eric有中文的语言包，可以下载语言包。
 
 
 Eric运行的界面如下：
+
 .. image:: images/Eric5.jpg
 
