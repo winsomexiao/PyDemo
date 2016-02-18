@@ -31,7 +31,9 @@ PyQt初阶
 .. toctree::
    :maxdepth: 2
 
-   modules
+   src
+   src.dbdemo
+   src.dbdemo.mysqlSimpleDemo
 
 索引和目录
 =======================
