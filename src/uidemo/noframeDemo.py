@@ -4,8 +4,7 @@
 # 导入模块
 import sys
 ######################################### 自定义窗口类 ########################################
-from PyQt5 import Qt
-
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 
