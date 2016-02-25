@@ -1,0 +1,443 @@
+QWidget{
+    background: #D3D3D3;
+    border: 5px;
+    border-style: solid;
+}
+
+QMainWindow{
+    background: #D3D3D3;
+    border: 5px;
+    border-style: solid;
+}
+
+QMainWindow::separator {
+    background: yellow;
+    width:10px;
+    height:10px;
+}
+
+QMainWindow::separator:hover {
+    background: red;
+}
+
+QPushButton{
+    width: 25px;
+    height: 25px;
+    border-image: url(icons/search.png);
+}
+
+QPushButton#searchBtn::hover{
+    width: 25px;
+    height: 25px;
+    border-image: url(icons/search_hover.png);
+}
+
+QPushButton#exit, QPushButton#mini, QPushButton#maxi{
+    color: gray;
+    font-family: "Yahei consolas Hybrid";
+    font-weight: bold;
+    font-size: 30px;
+    border: 0px;
+}
+
+QPushButton#login{
+    border: 0px;
+    font-family: "Yahei consolas Hybrid";
+    font-weight: bold;
+    color: #BABABA;
+}
+
+QPushButton#logins{
+    font-family: "Yahei consolas Hybrid";
+    font-weight: bold;
+    color: black;
+}
+
+QPushButton#login::hover, QPushButton#exit::hover, QPushButton#mini::hover, QPushButton#maxi::hover{
+    color: white;
+}
+
+QPushButton#find, QPushButton#locale{
+   border: 5px;
+   background-color: #D3D3D3;
+   border-radius: 5px;
+   font: bold;
+
+}
+
+QPushButton#find::hover, QPushButton#locale::hover{
+   border: 5px;
+   background-color: gray;
+   border-radius: 5px;
+   font-weight: bold;
+}
+
+QPushButton#find::focus, QPushButton#locale::focus{
+   border: 5px;
+   background-color: gray;
+   border-radius: 5px;
+   font-weight: bold;
+   color: #E6E8FA;
+}
+
+QPushButton#play{
+    border-image: url(icons/play.png);
+    border: 0px solid;
+    width: 48px;
+    height: 48px;
+}
+
+QPushButton#play::hover{
+    border-image: url(icons/play_hover.png);
+    border: 0px solid;
+    width: 48px;
+    height: 48px;
+}
+
+QPushButton#stop{
+    border-image: url(icons/stop.png);
+    border: 0px solid;
+    width: 36px;
+    height: 36px;
+}
+
+QPushButton#stop::hover{
+    border-image: url(icons/stop_hover.png);
+    border: 0px solid;
+    width: 36px;
+    height: 36px;
+}
+
+QPushButton#pause{
+    border-image: url(icons/pause.png);
+    border: 0px solid;
+    width: 48px;
+    height: 48px;
+}
+
+QPushButton#pause::hover{
+    border-image: url(icons/pause_hover.png);
+    border: 0px solid;
+    width: 48px;
+    height: 48px;
+}
+
+
+QPushButton#next{
+    border-image: url(icons/next.png);
+    border: 0px solid;
+    width: 36px;
+    height: 36px;
+}
+
+QPushButton#next::hover{
+    border-image: url(icons/next_hover.png);
+    border: 0px solid;
+    width: 36px;
+    height: 36px;
+}
+
+QPushButton#before{
+    border-image: url(icons/before.png);
+    border: 0px solid;
+    width: 36px;
+    height: 36px;
+}
+
+QPushButton#before::hover{
+    border-image: url(icons/before_hover.png);
+    border: 0px solid;
+    width: 36px;
+    height: 36px;
+}
+
+QPushButton#cycle{
+    border-image: url(icons/cycle_1.png);
+    border: 0px solid;
+    width: 16px;
+    height: 16px;
+
+}
+
+QPushButton#cycle::hover{
+    border-image: url(icons/cycle_hover.png);
+    border: 0px solid;
+    width: 16px;
+    height: 16px;
+
+}
+
+QPushButton#single{
+    border-image: url(icons/single_1.png);
+    border: 0px solid;
+    width: 16px;
+    height: 16px;
+}
+
+QPushButton#single::hover{
+    border-image: url(icons/single_hover.png);
+    border: 0px solid;
+    width: 16px;
+    height: 16px;
+}
+
+QPushButton#songslist{
+    width: 24px;
+    height: 24px;
+    border-image: url(icons/list.png);
+}
+
+QPushButton#songslist:hover{
+    border-image: url(icons/list_hover.png)
+}
+
+QLabel{
+    font-family: "Yahei consolas Hybrid";
+    font-weight: bold;
+}
+
+QLabel#headpic{
+    border: 5px solid;
+    border-radius: 25px;
+}
+
+QLabel#Headerhr{
+    border: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-top-color: qradialgradient(spread:pad, cx:0.7, cy:0.5, radius:1, fx:0.7, fy:0.5,
+stop:0.1 #000000, stop:1 #CD0000);
+    border-left-color: #222222;
+    border-right-color: #222222;
+    border-bottom-color: #222222;
+    color: gray;
+}
+
+QLabel#songlist{
+    border: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: #222222;
+    border-left-color: #222222;
+    border-right-color: #222222;
+    border-bottom-color: #222222;
+    color: gray;
+}
+
+QLabel#HText{
+    color: white;
+    font-size: 33px;
+}
+
+QLabel#spacing1{
+    border: 1px solid;
+    border-width: 2px;
+    border-top-color: #222222;
+    border-left-color: #222222;
+    border-bottom-color: #222222;
+    border-right-color: #000000;
+
+}
+
+QLabel#spacing2{
+    border: 1px solid;
+    border-width: 2px;
+    border-top-color: #222222;
+    border-right-color: #222222;
+    border-bottom-color: #222222;
+    border-left-color: #000000;
+}
+
+QLabel#title1{
+    color: gray;
+}
+
+QLabel#pic{
+    background: #FFFFFF;
+    border: 0px solid;
+    padding: 10px;
+}
+QLabel#name{
+    color: white;
+    font-size: 15px;
+}
+QLabel#tag, QLabel#author, QLabel#description{
+    color: lightgray;
+}
+
+QLabel#time1{
+    color: white;
+    font-weight: bold;
+}
+
+QLabel#time2{
+    color: white;
+    font-weight: bold;
+
+}
+
+QLabel#songname{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+QLineEdit#SearchLine{
+    background: #000000;
+    border: 5px solid;
+    border-radius: 10px;
+    font-weight: bold;
+    color: gray;
+}
+
+QLineEdit#SearchLine::active{
+    width: 200px;
+    background: #000000;
+    border: 5px solid;
+    border-radius: 10px;
+    color: gray;
+}
+
+QTableWidget::item:hover{
+    outline: #363636;
+    outline-style: none;
+    background-color: #BFEFFF;
+    color: #000000;
+}
+
+QTableView::item:selected{
+    outline: #363636;
+    outline-style: none;
+    background-color: #BFEFFF;
+    color: #000000;
+}
+
+QTableView#{
+    background-color: #000000;
+    border: 5px solid;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    color: white;
+
+}
+
+QTableView::item{
+    outline: #363636;
+    outline-style: none;
+    border: 0px solid #363636;
+    background-color: #000000;
+    color: #D6D6D6;
+    border-radius: 8px;
+    selection-background-color: #993333;
+}
+
+QHeaderView::section{
+    background-color: #000000;
+    color: white;
+}
+
+QHeaderView{
+    background-color: #000000;
+    color: white;
+}
+
+QScrollBar:vertical{
+    background: #363636;
+    width: 7px;
+    margin: 0px 0 0px 0;
+}
+
+QScrollBar:horizontal{
+    background: #363636;
+    width: 7px;
+    margin: 0 0 0 0;
+}
+
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background: lightgray;
+    min-height: 20px;
+    margin: 0 0 0 0;
+    border-radius: 3px;
+    border: none;
+}
+
+QScrollBar::handle:hover{
+    background: gray;
+    min-height: 20px;
+    margin: 0 0 0 0;
+    border-radius: 3px;
+    border: none;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::add-line:horizontal {
+    background: #363636;
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical, QScrollBar::sub-line:horizontal {
+    background: #363636;
+    height: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical, QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {
+    border: 1px solid grey;
+    width: 3px;
+    height: 3px;
+    background: white;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical, QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+QSlider#slider::groove:horizontal{
+    height: 5px;
+    width: 500px;
+    background: #C0C0C0;
+    border: 1px solid;
+    border-radius: 2px;
+    padding-left: -1px;
+    padding-right: -1px;
+    margin: 2px 0;
+}
+
+QSlider#slider::sub-page:horizontal{
+    background: #CD0000;
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+QSlider#slider::add-page:horizontal{
+    background: #C0C0C0;
+    border: 0px solid;
+    border-radius: 2px;
+}
+
+QSlider#slider::handle:horizontal{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.2, fx:0.5, fy:0.5,
+    stop:0.7 #CD0000, stop:0.8 #ABABAB);
+    width: 18px;
+    border-radius: 8px;
+    margin-top: -6px;
+    margin-bottom: -6px;
+}
+
+QSlider#slider::handle:horizontal:hover{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.2, fx:0.5, fy:0.5,
+    stop:0.7 #CD0000, stop:0.8 #FFFFFF);
+    width: 18px;
+    border-radius: 8px;
+    margin-top: -6px;
+    margin-bottom: -6px;
+}
+
+QDialog{
+    background: white;
+    border-radius: 10px;
+    padding: 5px;
+}

@@ -110,6 +110,8 @@ class MyMainWindowView(QMainWindow, Ui_myMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)  # 载入qt应用程序架构，所有qt通用
+    with open('window.qss', 'r') as qss:
+         app.setStyleSheet(qss.read())
     myshow = MyMainWindowView()
     myshow.show()
     sys.exit(app.exec_())

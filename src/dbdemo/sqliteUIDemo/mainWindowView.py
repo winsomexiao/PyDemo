@@ -19,8 +19,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.updBtn.clicked.connect(self.updBtnFunc)
             self.delBtn.clicked.connect(self.delBtnFunc)
 
-            self.dbPath=dbPath
-            self.curTable=tblName
+            self.dbPath="test.db"
+            self.curTable="test2"
 
             ###tableView与model绑定
             self.tableModel=QSqlTableModel(self,QSqlDatabase.addDatabase('QSQLITE'))
