@@ -7,7 +7,7 @@ import logging
 
 from src.ui.winsWidgetView import WinsWidgetView
 
-logging.basicConfig(level=logging.INFO) # change to 'DEBUG' to see more
+logging.basicConfig(level=logging.DEBUG) # change to 'DEBUG' to see more
 
 from PyQt5 import QtWidgets, QtGui
 

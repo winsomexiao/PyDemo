@@ -16,7 +16,7 @@ logger = logging.getLogger('winwidgetDemo')
 class WinsWidget(QWidget):
     """主窗口。"""
     def __init__(self, parent=None):
-        logger.info("_init__:begin")
+        logger.debug("_init__:begin")
         super(WinsWidget, self).__init__(parent)
 
         self.setObjectName('winsWidget')
@@ -76,7 +76,7 @@ class WinsWidget(QWidget):
         # 其他功能。
         self.load_login()
         self.setLayout(self.set_layouts())
-        logger.info("_init__:end")
+        logger.debug("_init__:end")
 
 
  # 设置布局。
@@ -85,7 +85,7 @@ class WinsWidget(QWidget):
             布局。
         """
         # 头布局start.
-        logger.info("set_layouts:begin")
+        logger.debug("set_layouts:begin")
         self.topLayout.setObjectName('Headerhbox')
         self.topLayout.addWidget(self.header_icon)
         self.topLayout.addWidget(self.header_text)
@@ -136,7 +136,7 @@ class WinsWidget(QWidget):
         self.mainLayout.setRowStretch(1, 1)
         self.mainLayout.setRowStretch(2, 20)
         self.mainLayout.setRowStretch(3, 3)
-        logger.info("set_layouts:end")
+        logger.debug("set_layouts:end")
         return self.mainLayout
 
 
@@ -163,19 +163,19 @@ class WinsWidget(QWidget):
         """
             登录
         """
-        logger.info("load_login:")
+        logger.debug("load_login:")
 
     def quit_login(self):
         """
             退出
         """
-        logger.info("quit_login:")
+        logger.debug("quit_login:")
 
     def load_stock_tableview(self):
         """
             加载表格
         """
-        logger.info("load_stock_tableview:begin")
+        logger.debug("load_stock_tableview:begin")
         self.stockTableModel.setTable("t1")
         self.stockTableModel.select()
         self.stockTableModel.setEditStrategy(QSqlTableModel.OnManualSubmit)
@@ -187,14 +187,14 @@ class WinsWidget(QWidget):
         #self.stockTableView.setGeometry(QtCore.QRect(290, 110, 471, 221))
         self.stockTableView.setObjectName("stockTableView")
 
-        logger.info("load_stock_tableview:end")
+        logger.debug("load_stock_tableview:end")
 
     def set_buttons(self):
         """
             全部的按钮组件。
         """
         # 退出。
-        logger.info("set_buttons:begin")
+        logger.debug("set_buttons:begin")
         self.btn_exit.setObjectName('exit')
         self.btn_exit.setText('×')
         self.btn_exit.clicked.connect(self.close)
@@ -230,53 +230,53 @@ class WinsWidget(QWidget):
         self.btn_del_stock.setIcon(QIcon('icons/delBtn.png'))
         self.btn_del_stock.setText("删除")
         self.btn_del_stock.clicked.connect(self.delStockFunc)
-        logger.info("set_buttons:end")
+        logger.debug("set_buttons:end")
 
 
     def set_lines(self):
         """
             输入框。
         """
-        logger.info("set_lines:begin")
+        logger.debug("set_lines:begin")
         self.search_line.setObjectName('SearchLine')
         self.search_line.setPlaceholderText('搜索')
-        logger.info("set_lines:end")
+        logger.debug("set_lines:end")
 
     def set_sliders(self):
         """
             滚动组件。
         """
-        logger.info("set_sliders:begin")
+        logger.debug("set_sliders:begin")
         self.slider.setObjectName("slider")
         self.slider.setOrientation(Qt.Horizontal)
-        logger.info("set_sliders:end")
+        logger.debug("set_sliders:end")
 
 
     def hide_index(self):
         """
             隐藏主页, 显示歌单详细信息。
         """
-        logger.info("hide_index")
+        logger.debug("hide_index")
 
     def show_index(self):
         """
             显示主页。
         """
-        logger.info("show_index")
+        logger.debug("show_index")
     # 切换页面end.
 
 
 
     """重写鼠标事件，实现窗口拖动。"""
     def mousePressEvent(self, event):
-        logger.info("mousePressEvent:")
+        logger.debug("mousePressEvent:")
         if event.buttons() == Qt.LeftButton:
             self.m_drag = True
             self.m_DragPosition = event.globalPos()-self.pos()
             event.accept()
 
     def mouseMoveEvent(self, event):
-        logger.info("mouseMoveEvent:")
+        logger.debug("mouseMoveEvent:")
         try:
             if event.buttons() and Qt.LeftButton:
                 self.move(event.globalPos()-self.m_DragPosition)
@@ -285,44 +285,44 @@ class WinsWidget(QWidget):
             pass
 
     def mouseReleaseEvent(self, event):
-        logger.info("mouseReleaseEvent:")
+        logger.debug("mouseReleaseEvent:")
         self.m_drag = False
 
     """按键绑定。。"""
     def keyPressEvent(self, event):
-        logger.info("keyPressEvent:")
+        logger.debug("keyPressEvent:")
         if event.key() == Qt.Key_Enter or event.key() == Qt.Key_Enter-1:
             self.song_search()
 
     """退出窗口时做的一些事。"""
     def closeEvent(self, event):
         # 退出时保存歌曲列表缓存。
-        logger.info("showEvent:")
+        logger.debug("showEvent:")
 
 
     """界面开始前的一些事。"""
     def showEvent(self, event):
-       logger.info("showEvent:")
+       logger.debug("showEvent:")
 
 
 
 #查询按钮关联的槽函数
     def qryStockFunc(self):
         #self.db.execSQL("select * from t1")
-        logger.info("qryStockFunc:")
+        logger.debug("qryStockFunc:")
 
 #插入按钮关联的槽函数
     def addStockFunc(self):
-        logger.info("addStockFunc:begin")
+        logger.debug("addStockFunc:begin")
         f1=random.randint(1, 99)
         self.myTableModel.insertRows(0, 1)
         self.myTableModel.setData(self.myTableModel.index(0, 0), f1)
         self.myTableModel.setData(self.myTableModel.index(0, 1), "test")
         self.myTableModel.submitAll()
-        logger.info("addStockFunc:end")
+        logger.debug("addStockFunc:end")
 
     def delStockFunc(self):
-        logger.info("delStockFunc:begin")
+        logger.debug("delStockFunc:begin")
         rs=list(map(lambda x:x.row(),self.myTableView.selectedIndexes()))
         if len(rs)==0:
             QMessageBox.information(self,'提醒','请先选中至少一行，再点击此按钮！')
@@ -330,4 +330,4 @@ class WinsWidget(QWidget):
             for i in reversed(rs):
                 self.myTableModel.removeRows(i,1)
                 self.myTableModel.submitAll()
-        logger.info("delStockFunc:end")
+        logger.debug("delStockFunc:end")
