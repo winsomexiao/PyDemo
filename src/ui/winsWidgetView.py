@@ -2,10 +2,13 @@
 import logging
 import random
 
+import sys
+from PyQt5 import QtGui
+
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtSql import QSqlTableModel, QSqlDatabase
-from PyQt5.QtWidgets import QWidget, QMessageBox, QAbstractItemView
-from PyQt5.QtCore import Qt, QSize, QThread
+from PyQt5.QtWidgets import QWidget, QMessageBox, QAbstractItemView, QStatusBar
+from PyQt5.QtCore import Qt, QSize, QThread, pyqtSlot
 
 from src.ui.thread.tushareWorkObject import TushareWorkObject
 from src.ui.winsWidget import Ui_Wins_Widget
@@ -35,7 +38,16 @@ class WinsWidgetView(QWidget, Ui_Wins_Widget):
             self.set_labels()
             self.set_lines()
             self.load_tableview()
+            self.init_bottom()
             logger.debug("_init__:end")
+
+
+        def init_bottom(self):
+            self.progressBar.hide()
+            self.progresslable.hide()
+            self.statusBar= QStatusBar(self);
+            self.rightBottom.addWidget(self.statusBar)
+            #self.statusBar.setGeometry(30,40,200,25);
 
 
         def initThread(self):
@@ -44,8 +56,16 @@ class WinsWidgetView(QWidget, Ui_Wins_Widget):
             self.tsWork=TushareWorkObject()
             self.tsWork.moveToThread(self.thread) ##另起子线程，防止ui主线程卡死
             self.thread.start()
+            #槽函数不要加()，否则会报参数异常
+            self.tsWork.procegressBarSignal.connect(self.setProcegressBar)
             logger.debug("_init end__:thread")
 
+        def setProcegressBar(self,i):
+            print("setProcegressBar:")
+            print(i)
+            self.progressBar.show()
+            self.progressBar.setRange(0, i)
+            pass
 
         """重写鼠标事件，实现窗口拖动。"""
         def mousePressEvent(self, event):
@@ -166,6 +186,7 @@ class WinsWidgetView(QWidget, Ui_Wins_Widget):
             self.page2btn1.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
             logging.debug("self.page2btn1.clicked.connect(self.tsWork.findLimitupStocks)")
             self.page2btn1.clicked.connect(self.tsWork.findLimitupStocks)
+
 
             self.page2btn2.setIcon(QIcon("icons/stockIcon.png"))
             self.page2btn2.setText(self.tr("通联"))

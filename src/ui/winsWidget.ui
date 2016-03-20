@@ -24,7 +24,29 @@
    </property>
    <layout class="QGridLayout" name="mainLayout" rowstretch="2,17,1">
     <item row="2" column="0">
-     <layout class="QHBoxLayout" name="bottomLayout"/>
+     <layout class="QHBoxLayout" name="bottomLayout" stretch="1,1">
+      <item>
+       <layout class="QHBoxLayout" name="leftBottom">
+        <item>
+         <widget class="QLabel" name="progresslable">
+          <property name="text">
+           <string>加载进度:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QProgressBar" name="progressBar">
+          <property name="value">
+           <number>24</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="rightBottom"/>
+      </item>
+     </layout>
     </item>
     <item row="1" column="0">
      <layout class="QHBoxLayout" name="centerLayout" stretch="1,9">

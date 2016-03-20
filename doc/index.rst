@@ -33,6 +33,7 @@ PyQt初阶
    :maxdepth: 2
 
    contents/pyqt/05_mysql_simple
+   contents/pyqt/06_pyqt_error
 
 相关代码Demo
 ====================

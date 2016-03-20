@@ -5,7 +5,7 @@ import time
 import pandas
 import sys
 import tushare
-from PyQt5.QtCore import pyqtSignal, QThread, QObject
+from PyQt5.QtCore import pyqtSignal, QObject
 
 import tushare as ts
 
@@ -14,8 +14,16 @@ from sqlalchemy import create_engine
 import pymysql
 pymysql.install_as_MySQLdb()
 
+'''此处是要放在QT子线程中运行的，
+QT中子线程内不能操作GUI界面，切记切记
+QT中操作GUI界面，会造成主界面崩溃
+'''
+
 class TushareWorkObject(QObject):
     outSignal = pyqtSignal(str)
+    procegressBarSignal=pyqtSignal(int)
+
+    #self.emit(QtCore.SIGNAL("setProcegressBar(int)"),len(self.chapterList))
 
     def __init__(self, parent=None):
         logging.debug("begin init")
@@ -36,7 +44,10 @@ class TushareWorkObject(QObject):
 
     #
     def findLimitupStocks(self):
+        #self.emit(QtCore.SIGNAL("setProcegressBar(int)"),len(self.chapterList))
+
         logging.debug("begin findLimitupStocks")
+        self.procegressBarSignal.emit(9)
         allData = tushare.get_today_all()
         upDate = time.strftime("%Y-%m-%d", time.localtime())
         upFileName = "UP" + upDate + ".csv"
@@ -50,6 +61,7 @@ class TushareWorkObject(QObject):
         outputAllDataFileDir = self.config['outputDir'] + "/" + allDataFileName
         upData = pandas.read_csv(outputUpDataFileDir, encoding='gbk', index_col=0, dtype={'code': str})
         print(upData['code'])
+        self.procegressBarSignal.emit(99)
         logging.debug("end findLimitupStocks")
 
 
