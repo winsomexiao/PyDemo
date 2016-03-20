@@ -5,7 +5,9 @@ import random
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtSql import QSqlTableModel, QSqlDatabase
 from PyQt5.QtWidgets import QWidget, QMessageBox, QAbstractItemView
-from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtCore import Qt, QSize, QThread
+
+from src.ui.thread.tushareWorkObject import TushareWorkObject
 from src.ui.winsWidget import Ui_Wins_Widget
 
 __author__ = 'wins'
@@ -28,25 +30,33 @@ class WinsWidgetView(QWidget, Ui_Wins_Widget):
 
             self.tableModel=QSqlTableModel(self,QSqlDatabase.addDatabase('QSQLITE'))
 
+            self.initThread()
             self.set_buttons()
             self.set_labels()
             self.set_lines()
             self.load_tableview()
-
             logger.debug("_init__:end")
 
+
+        def initThread(self):
+            logger.debug("_init__:thread")
+            self.thread=QThread()
+            self.tsWork=TushareWorkObject()
+            self.tsWork.moveToThread(self.thread) ##另起子线程，防止ui主线程卡死
+            self.thread.start()
+            logger.debug("_init end__:thread")
 
 
         """重写鼠标事件，实现窗口拖动。"""
         def mousePressEvent(self, event):
-            logger.debug("mousePressEvent:")
+            #logger.debug("mousePressEvent:")
             if event.buttons() == Qt.LeftButton:
                 self.m_drag = True
                 self.m_DragPosition = event.globalPos()-self.pos()
                 event.accept()
 
         def mouseMoveEvent(self, event):
-            logger.debug("mouseMoveEvent:")
+            #logger.debug("mouseMoveEvent:")
             try:
                 if event.buttons() and Qt.LeftButton:
                     self.move(event.globalPos()-self.m_DragPosition)
@@ -55,7 +65,7 @@ class WinsWidgetView(QWidget, Ui_Wins_Widget):
                 pass
 
         def mouseReleaseEvent(self, event):
-            logger.debug("mouseReleaseEvent:")
+            #logger.debug("mouseReleaseEvent:")
             self.m_drag = False
 
 
@@ -108,7 +118,7 @@ class WinsWidgetView(QWidget, Ui_Wins_Widget):
             self.delBtn.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
             logger.debug("set_buttons:end")
 
-            self.toolBox.setCurrentIndex(0)
+            self.toolBox.setCurrentIndex(1)
             self.toolBox.setItemIcon(0,QIcon("icons/homeIcon.png"))
             self.toolBox.setItemIcon(1,QIcon("icons/homeIcon.png"))
 
@@ -154,24 +164,45 @@ class WinsWidgetView(QWidget, Ui_Wins_Widget):
             self.page2btn1.setIconSize(QSize(40,40))
             self.page2btn1.setAutoRaise(True)
             self.page2btn1.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+            logging.debug("self.page2btn1.clicked.connect(self.tsWork.findLimitupStocks)")
+            self.page2btn1.clicked.connect(self.tsWork.findLimitupStocks)
 
             self.page2btn2.setIcon(QIcon("icons/stockIcon.png"))
-            self.page2btn2.setText(self.tr("证券"))
+            self.page2btn2.setText(self.tr("通联"))
             self.page2btn2.setIconSize(QSize(40,40))
             self.page2btn2.setAutoRaise(True)
             self.page2btn2.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
+
             self.page2btn3.setIcon(QIcon("icons/contactIcon.png"))
-            self.page2btn3.setText(self.tr("收益率"))
+            self.page2btn3.setText(self.tr("货币供应"))
             self.page2btn3.setIconSize(QSize(40,40))
             self.page2btn3.setAutoRaise(True)
             self.page2btn3.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+            logging.debug("self.page2btn1.clicked.connect(self.tsWork.findLimitupStocks)")
+            self.page2btn3.clicked.connect(self.tsWork.getMoneySupply)
 
             self.page2btn4.setIcon(QIcon("icons/calIcon.png"))
             self.page2btn4.setText(self.tr("绩效"))
             self.page2btn4.setIconSize(QSize(40,40))
             self.page2btn4.setAutoRaise(True)
             self.page2btn4.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+
+        def getLimitupStock_work(self):
+            logging.debug("winview:begin getLimitupStock_work")
+            tsWork=TushareWorkObject()
+            tsWork.moveToThread(self.thread) ##另起子线程，防止ui主线程卡死
+
+            self.limupStockThread.setRun(6)
+            logging.debug("winview:begin beginRun")
+            self.limupStockThread.outSignal.connect(self.limupStockThread_outfunc)
+
+        def limupStockThread_outfunc(self,text):
+            QMessageBox.about( self, "涨停板股票收集",text)
+            print("limupStockThread_outfunc"+text)
+
+
+
 
 
         def set_labels(self):
